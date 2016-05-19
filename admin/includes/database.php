@@ -1,33 +1,48 @@
 <?php
-require_once("new_config.php");
+	require_once("new_config.php");
 
-class Database {
-	public $connection;
+	class Database {
+		public $connection;
 
-	function __construct() {
+		function __construct() {
 
-		$this->open_db_connection();
-	}
+			$this->open_db_connection();
+		}
+	//	connect to database method
+		public function open_db_connection() {
 
-	public function open_db_connection() {
+			$this->connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-		$this->connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+			if($this->connection->connect_errno) {
 
-		if(mysqli_connect_errno()) {
+				die("Database connection failed" . $this->connection->connect_error);
+			}
+		}
+		//	end of open_db_connection
+		//query database method
+		public function query_db($sql) {
+			$result = $this->connection->query($sql);
+			$this->confirm_query($result);
+			return $result;
+		}
+	//	end of query_db method
+	//	confirm query success
+		private function confirm_query($result) {
+			if(!$result) {
+				die("Database Query Failed" . $this->connection->error);
+			}
+		}
+	//	end of confirm_query
+	//	prevent sql injection with mysqli_real_escape_string()
+		public function escape_string($string) {
 
-			die("Database connection failed" . mysqli_error());
+			$escaped_string = $this->connection->real_escape_string($string);
+			return $escaped_string;
+		}
+
+		public function the_insert_id() {
+			return $this->connection->insert_id;
 		}
 	}
-
-	//query database method
-	public function query_db($sql) {
-		$result = mysqli_query($this->$connection, $sql);
-		if(!$result) {
-			die("Database Query Failed" . mysql_errno($result));
-
-		}
-		return $result;
-	}
-}
-$database = new Database();
+	$database = new Database();
 ?>
