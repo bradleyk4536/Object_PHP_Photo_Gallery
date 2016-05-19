@@ -1,3 +1,5 @@
+<!--to turn output buffer - used with redirection (use of header function )-->
+
 <!DOCTYPE html>
 <html lang="en">
 
