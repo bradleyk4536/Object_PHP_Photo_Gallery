@@ -11,10 +11,11 @@
 					</h1>
 					<?php
 
+				  		$found_user = User::find_user_by_id(2);
+						echo $found_user->username;
 
-				  		$found_user = User::find_user_by_id(1);
 
-				  		echo $found_user['username'];
+
 
 
 				  	?>
