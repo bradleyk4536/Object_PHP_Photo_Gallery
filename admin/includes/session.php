@@ -1,6 +1,6 @@
 <?php
 
-class Session() {
+class Session {
 
 	private $signed_in = false;
 	public $user_id;
@@ -20,7 +20,7 @@ class Session() {
 		} else {
 //		destroy the specified variables
 			unset($this->user_id);
-			$this->signed_in = false;
+			$this->is_signed_in = false;
 		}
 	}
 

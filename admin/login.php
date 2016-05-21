@@ -1,4 +1,4 @@
-<?php include("init.php"); ?>
+<?php include("includes/header.php"); ?>
 
 
 <?php
@@ -20,10 +20,34 @@ if(isset($_POST['submit'])) {
 	} else {
 		$the_message = "Your password or username are incorrect";
 
-	  } else {
+	  }
+} else {
 //			neutralize variables so you dont get undeclared variables error if empty
 			$username = "";
 			$password = "";
 		 }
-}
 ?>
+
+<div class="col-md-4 col-md-offset-3">
+<h4 class="bg-danger"></h4>
+	<form id="login-id" action="" method="post">
+
+		<div class="form-group">
+			<label for="username">Username</label>
+			<input type="text" class="form-control" name="username" value="" >
+
+		</div>
+
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" name="password" value="">
+
+		</div>
+
+
+		<div class="form-group">
+		<input type="submit" name="submit" value="Submit" class="btn btn-primary">
+
+		</div>
+	</form>
+</div>

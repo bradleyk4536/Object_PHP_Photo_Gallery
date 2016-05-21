@@ -18,7 +18,7 @@
 			$result_array = self::find_this_query("SELECT * FROM users WHERE id = $user_id LIMIT 1 ");
 //			check to see if array is populated if so return just the first item
 			return !empty($result_array) ? array_shift($result_array) : false;
-			return $found_user;
+
 		}
 //			query table to get results
 		private static function find_this_query($sql){
@@ -36,13 +36,14 @@
 		}
 
 		//verify user is in user database
-		public static function verify_user() {
+		public static function verify_user($username, $password) {
 
 			global $database;
 
+//			clean database from form
 			$username = $database->escape_string($username);
 			$password = $database->escape_string($password);
-
+//			create query to pull username and password from database
 			$sql = "SELECT * FROM users WHERE ";
 			$sql .= "username = '{$username}' ";
 			$sql .= "AND password = '{$password}' ";
