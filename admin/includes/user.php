@@ -18,10 +18,9 @@
 			$result_array = self::find_this_query("SELECT * FROM users WHERE id = $user_id LIMIT 1 ");
 //			check to see if array is populated if so return just the first item
 			return !empty($result_array) ? array_shift($result_array) : false;
-			return $found_user;
 		}
 //			query table to get results
-		private static function find_this_query($sql){
+		public static function find_this_query($sql){
 //			make database global so we can use the query_db method in Database class
 			global $database;
 
@@ -34,8 +33,26 @@
 			}
 			return $the_object_array;
 		}
+
+		public static function verify_user($username, $password) {
+			global $database;
+
+			$username = $database->escape_string($username);
+			$password = $database->escape_string($password);
+
+			$sql = "SELECT * FROM users WHERE ";
+			$sql .= "username = '{$username}' ";
+			$sql .= "AND password = '{$password}' ";
+			$sql .= "LIMIT 1";
+
+			$result_array = self::find_this_query($sql);
+//			check to see if array is populated if so return just the first item
+			return !empty($result_array) ? array_shift($result_array) : false;
+
+		}
+
 //		auto instantiation of user object
-		private static function instantation($the_record) {
+		public static function instantation($the_record) {
 //			create object User
 			$the_object = new self;
 			foreach($the_record as $the_attribute => $value) {

@@ -12,5 +12,10 @@
 		require_once $the_path;
 	}
  }
+
+function redirect($location) {
+
+	header("Location: {$location}");
+}
 spl_autoload_register('classAutoLoader');
 ?>
