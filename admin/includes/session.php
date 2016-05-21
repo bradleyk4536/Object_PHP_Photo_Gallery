@@ -11,23 +11,21 @@ class Session() {
 		$this->check_the_login();
 	}
 
-	private function check_the_login {
+	private function check_the_login() {
 		//	Check if session user_id is set
 		if(isset($_SESSION['user_id'])) {
 //			if set assign the user id to $user_id
 			$this->user_id = $_SESSION['user_id'];
 			$this->signed_in = true;
 		} else {
+//		destroy the specified variables
 			unset($this->user_id);
 			$this->signed_in = false;
 		}
 	}
 
 //	getter method
-	public function is_signed_in {
-
-		return $this->signed_in;
-	}
+	public function is_signed_in() { return $this->signed_in; }
 
 	public function login($user) {
 /*		test the parameter is available if so assign the id from user class to session id and then to the class user id
@@ -45,7 +43,6 @@ class Session() {
 		$this->signed_in = false;
 	}
 }
-
 //Create an instance of Session class
 $session = new Session();
 ?>

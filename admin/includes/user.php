@@ -34,6 +34,25 @@
 			}
 			return $the_object_array;
 		}
+
+		//verify user is in user database
+		public static function verify_user() {
+
+			global $database;
+
+			$username = $database->escape_string($username);
+			$password = $database->escape_string($password);
+
+			$sql = "SELECT * FROM users WHERE ";
+			$sql .= "username = '{$username}' ";
+			$sql .= "AND password = '{$password}' ";
+			$sql .= "LIMIT 1";
+
+			$result_query = self::find_this_query($sql);
+//			check to see if array is populated if so return just the first item
+			return !empty($result_array) ? array_shift($result_array) : false;
+		}
+
 //		auto instantiation of user object
 		private static function instantation($the_record) {
 //			create object User
@@ -51,5 +70,7 @@
 //			checks to see if a given key exists in array returns true if so
 			return array_key_exists($the_attribute, $object_properties);
 		}
+
+
 	}
 ?>
