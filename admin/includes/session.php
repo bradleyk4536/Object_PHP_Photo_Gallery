@@ -3,12 +3,38 @@
 
 		private $signed_in = false;
 		public $user_id;
+		public $message;
 
 		function __construct() {
 			session_start();
 			$this->check_the_login();
+			$this->check_message();
 
 		}
+//message display method
+		public function message($msg="") {
+
+			if(!empty($msg)) {
+				$_SESSION['message'] = $msg;
+			} else {
+				return $this->message;
+			}
+		}
+
+//method to check if message is set
+
+		private function check_message(){
+
+			if(isset($_SESSION['message'])) {
+
+				$this->message = $_SESSION['message'];
+				unset($_SESSION['message']);
+			} else {
+
+				$this->message = "";
+			}
+		}
+
 //		getter method
 		public function is_signed_in() {
 

@@ -33,7 +33,7 @@
 			}
 			return $the_object_array;
 		}
-
+//for the login.php
 		public static function verify_user($username, $password) {
 			global $database;
 
