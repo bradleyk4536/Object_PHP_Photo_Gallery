@@ -10,9 +10,15 @@
 						 <small>Subheading</small>
 					</h1>
 					<?php
+//				  		My way of doing it for section 77 challenge
+				  		$new_user = new User();
 
-				  		$found_user = User::find_user_by_id(2);
-						echo $found_user->username;
+				  		$new_user->username = "mikej";
+				  		$new_user->password = "password";
+				  		$new_user->first_name = "Mike";
+				  		$new_user->last_name = "Jones";
+
+				  		$new_user->create();
 
 
 
