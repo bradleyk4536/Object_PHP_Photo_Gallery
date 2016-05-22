@@ -77,16 +77,32 @@
 			$sql .= $database->escape_string($this->password) . "', '";
 			$sql .= $database->escape_string($this->first_name) . "', '";
 			$sql .= $database->escape_string($this->last_name) . "')";
-
+//test for success
 			if($database->query_db($sql)) {
 				$this->id = $database->the_insert_id();
 				return true;
-
 		} else {
 				return false;
 			}
 		}
 
+		public function update() {
+			global $database;
+
+			$sql = "UPDATE users SET ";
+			$sql .= "username = '" . $database->escape_string($this->username) . "', ";
+			$sql .= "password = '" . $database->escape_string($this->password) . "', ";
+			$sql .= "first_name = '" . $database->escape_string($this->first_name) . "', ";
+			$sql .= "last_name = '" . $database->escape_string($this->last_name) . "' ";
+			$sql .= " WHERE id = " . $database->escape_string($this->id);
+
+			$database->query_db($sql);
+
+
+//			test for modification
+		return (mysqli_affected_rows($database->connection) == 1) ? true : false;
+			//return ($database->connection->affected_rows($database->connection) == 1) ? true : false;
+		}
 	} //END OF USER CLASS
 
 

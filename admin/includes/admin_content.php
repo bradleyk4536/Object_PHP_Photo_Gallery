@@ -11,18 +11,28 @@
 					</h1>
 					<?php
 //				  		My way of doing it for section 77 challenge
-				  		$new_user = new User();
+//				  		My way of doing it for section 77 challenge
+//				  		$new_user = new User();
+//
+//				  		$new_user->username = "Dave";
+//				  		$new_user->password = "password";
+//				  		$new_user->first_name = "Mike";
+//				  		$new_user->last_name = "Jones";
+//
+//				  		$new_user->create();
+//				  static method no need to instantiate
+//				  		$new_user = new User();
+//
+//						$new_user->find_user_by_id(2);
+//
+//				  		$new_user->last_name = "WILLIAMS";
+//
+//				  		$new_user->update();
 
-				  		$new_user->username = "mikej";
-				  		$new_user->password = "password";
-				  		$new_user->first_name = "Mike";
-				  		$new_user->last_name = "Jones";
+				  		$user = User::find_user_by_id(2);
+				  		$user->username = "DaveCrocket";
 
-				  		$new_user->create();
-
-
-
-
+				  		$user->update();
 
 				  	?>
 					<ol class="breadcrumb">
