@@ -29,10 +29,10 @@
 //
 //				  		$new_user->update();
 
-				  		$user = User::find_user_by_id(2);
-				  		$user->username = "DaveCrocket";
+				  		$user = User::find_user_by_id(6);
 
-				  		$user->update();
+
+				  		$user->delete();
 
 				  	?>
 					<ol class="breadcrumb">

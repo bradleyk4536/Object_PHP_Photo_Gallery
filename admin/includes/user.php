@@ -97,11 +97,20 @@
 			$sql .= " WHERE id = " . $database->escape_string($this->id);
 
 			$database->query_db($sql);
-
-
 //			test for modification
-		return (mysqli_affected_rows($database->connection) == 1) ? true : false;
+			return (mysqli_affected_rows($database->connection) == 1) ? true : false;
 			//return ($database->connection->affected_rows($database->connection) == 1) ? true : false;
+		}
+
+		public function delete() {
+			global $database;
+
+			$sql = "DELETE FROM users WHERE id = " . $database->escape_string($this->id);
+			$sql .= " LIMIT 1";
+			$database->query_db($sql);
+//			test for modification
+			return(mysqli_affected_rows($database->connection) == 1) ? true : false;
+
 		}
 	} //END OF USER CLASS
 
