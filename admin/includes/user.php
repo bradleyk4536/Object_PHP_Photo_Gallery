@@ -84,6 +84,15 @@
 			}
 			return $properties;
 		}
+		protected function clean_properties(){
+			global $database;
+//			loop through properties method and pull keys and values
+			$clean_properties = array();
+			foreach($this->properties() as $key => $value) {
+				$clean_properties[$key] = $database->escape_string($value);
+			}
+			return $clean_properties;
+		}
 //   check to see if user exists before adding if exists just update.
 		public function save() {
 			return isset($this->id) ? $this->update() : $this->create();
@@ -92,7 +101,7 @@
 		public function create(){
 			global $database;
 //			has all the objects properties from get_object_vars();
-			$properties = $this->properties();
+			$properties = $this->clean_properties();
 /*abstraction pull all the keys and values from $properties associative array with implode and separate with comma */
 			$sql = "INSERT INTO " . self::$db_table . "(" . implode(",", array_keys($properties)) . ")";
 			$sql .= "VALUES ('" . implode("','", array_values($properties)) . "')";
@@ -107,12 +116,17 @@
 
 		public function update() {
 			global $database;
+//			has all the objects properties from get_object_vars();
+			$properties = $this->clean_properties();
+
+			$properties_pairs = array();
+//			loop through properties array and pull out the keys and valuse
+			foreach($properties as $key => $value) {
+				$properties_pairs[] = "{$key}='{$value}'";
+			}
 
 			$sql = "UPDATE " .self::$db_table. " SET ";
-			$sql .= "username = '" . $database->escape_string($this->username) . "', ";
-			$sql .= "password = '" . $database->escape_string($this->password) . "', ";
-			$sql .= "first_name = '" . $database->escape_string($this->first_name) . "', ";
-			$sql .= "last_name = '" . $database->escape_string($this->last_name) . "' ";
+			$sql .= implode(", ", $properties_pairs);
 			$sql .= " WHERE id = " . $database->escape_string($this->id);
 
 			$database->query_db($sql);
