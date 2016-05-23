@@ -8,16 +8,16 @@
 		public $first_name;
 		public $last_name;
 //		find and display all users in users table
-		public static function find_all_users(){
+		public static function find_all(){
 //
-			return self::find_this_query("SELECT * FROM users");
+			return self::find_this_query("SELECT * FROM " . self::$db_table . " ");
 		}
 //		find a user from database using the id
-		public static function find_user_by_id($id) {
+		public static function find_by_id($id) {
 //			make database global so we can use the query_db method in Database class
 			global $database;
 			$user_id = $database->escape_string($id);
-			$result_array = self::find_this_query("SELECT * FROM users WHERE id = $user_id LIMIT 1 ");
+			$result_array = self::find_this_query("SELECT * FROM " . self::$db_table . " WHERE id = $user_id LIMIT 1 ");
 //			check to see if array is populated if so return just the first item
 			return !empty($result_array) ? array_shift($result_array) : false;
 		}
@@ -42,7 +42,7 @@
 			$username = $database->escape_string($username);
 			$password = $database->escape_string($password);
 
-			$sql = "SELECT * FROM users WHERE ";
+			$sql = "SELECT * FROM " . self::$db_table . " WHERE ";
 			$sql .= "username = '{$username}' ";
 			$sql .= "AND password = '{$password}' ";
 			$sql .= "LIMIT 1";

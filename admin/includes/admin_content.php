@@ -12,13 +12,13 @@
 					<?php
 //				  		My way of doing it for section 77 challenge
 //				  		My way of doing it for section 77 challenge
-				  		$new_user = new User();
-
-				  		$new_user->username = "hiphopster9";
-				  		$new_user->password = "password";
-				  		$new_user->first_name = "Cindy";
-				  		$new_user->last_name = "Brady";
-				  		$new_user->create();
+//				  		$new_user = new User();
+//
+//				  		$new_user->username = "hiphopster9";
+//				  		$new_user->password = "password";
+//				  		$new_user->first_name = "Cindy";
+//				  		$new_user->last_name = "Brady";
+//				  		$new_user->create();
 //
 //				  		$new_user->create();
 //				  static method no need to instantiate
