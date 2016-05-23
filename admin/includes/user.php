@@ -1,5 +1,7 @@
 <?php
 	class User {
+		protected static $db_table = "users";
+		protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name');
 		public $id;
 		public $username;
 		public $password;
@@ -69,14 +71,31 @@
 			return array_key_exists($the_attribute, $object_properties);
 		}
 
+		protected function properties() {
+//			get all properties of an object
+			//return get_object_vars($this);
+			$properties = array();
+			foreach (self::$db_table_fields as $db_field) {
+//				check to see if properties exists
+				if(property_exists($this, $db_field)) {
+//					property exists so add the value to the field
+					$properties[$db_field] = $this->$db_field;
+				}
+			}
+			return $properties;
+		}
+//   check to see if user exists before adding if exists just update.
+		public function save() {
+			return isset($this->id) ? $this->update() : $this->create();
+		}
+
 		public function create(){
 			global $database;
-			$sql = "INSERT INTO users (username, password, first_name, last_name) ";
-			$sql .= "VALUES ('";
-			$sql .= $database->escape_string($this->username) . "', '";
-			$sql .= $database->escape_string($this->password) . "', '";
-			$sql .= $database->escape_string($this->first_name) . "', '";
-			$sql .= $database->escape_string($this->last_name) . "')";
+//			has all the objects properties from get_object_vars();
+			$properties = $this->properties();
+/*abstraction pull all the keys and values from $properties associative array with implode and separate with comma */
+			$sql = "INSERT INTO " . self::$db_table . "(" . implode(",", array_keys($properties)) . ")";
+			$sql .= "VALUES ('" . implode("','", array_values($properties)) . "')";
 //test for success
 			if($database->query_db($sql)) {
 				$this->id = $database->the_insert_id();
@@ -89,7 +108,7 @@
 		public function update() {
 			global $database;
 
-			$sql = "UPDATE users SET ";
+			$sql = "UPDATE " .self::$db_table. " SET ";
 			$sql .= "username = '" . $database->escape_string($this->username) . "', ";
 			$sql .= "password = '" . $database->escape_string($this->password) . "', ";
 			$sql .= "first_name = '" . $database->escape_string($this->first_name) . "', ";
@@ -105,7 +124,7 @@
 		public function delete() {
 			global $database;
 
-			$sql = "DELETE FROM users WHERE id = " . $database->escape_string($this->id);
+			$sql = "DELETE FROM " .self::$db_table. " WHERE id = " . $database->escape_string($this->id);
 			$sql .= " LIMIT 1";
 			$database->query_db($sql);
 //			test for modification

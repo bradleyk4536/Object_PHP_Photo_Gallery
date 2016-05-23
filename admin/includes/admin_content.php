@@ -12,14 +12,15 @@
 					<?php
 //				  		My way of doing it for section 77 challenge
 //				  		My way of doing it for section 77 challenge
-//				  		$new_user = new User();
-//
-//				  		$new_user->username = "Dave";
-//				  		$new_user->password = "password";
-//				  		$new_user->first_name = "Mike";
-//				  		$new_user->last_name = "Jones";
-//
-//				  		$new_user->create();
+				  		$new_user = new User();
+
+				  		$new_user->username = "hiphopster3";
+				  		$new_user->password = "password";
+				  		$new_user->first_name = "Cindy";
+				  		$new_user->last_name = "Brady";
+//				  		$new_user->save();
+
+				  		$new_user->create();
 //				  static method no need to instantiate
 //				  		$new_user = new User();
 //
@@ -29,10 +30,16 @@
 //
 //				  		$new_user->update();
 
-				  		$user = User::find_user_by_id(6);
+//				  		$user = User::find_user_by_id(5);
+//
+//
+//				  		$user->username = "bigMike";
+//
+//				  		$user->save();
 
-
-				  		$user->delete();
+//				  		$updateuser = User::find_user_by_id(5);
+//
+//				  		$updateuser->delete();
 
 				  	?>
 					<ol class="breadcrumb">
