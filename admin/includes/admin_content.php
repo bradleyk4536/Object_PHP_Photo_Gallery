@@ -44,7 +44,22 @@
 //				  		$users = User::find_all();
 //				  		foreach($users as $user) {
 //							echo $user->username . "<br>";
+////						}
+//
+//				  		$photos = Photo::find_all();
+//				  		foreach($photos as $photo) {
+//							echo $photo->title;
 //						}
+
+//				  		$new_photo = new Photo();
+//
+//				  		$new_photo->title = "Camp ground Boy";
+//				  		$new_photo->description = "This is my third photo";
+//				  		$new_photo->filename = "photo3.jpg";
+//				  		$new_photo->type = ".jpg";
+//				  		$new_photo->save();
+
+				  	echo INCLUDES_PATH;
 
 				  	?>
 					<ol class="breadcrumb">
