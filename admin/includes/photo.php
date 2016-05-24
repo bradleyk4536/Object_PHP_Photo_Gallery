@@ -44,6 +44,10 @@
 				$this->size = $file['size'];
 			}
 		}
+//		dynamic image dirctory
+		public function picture_path() {
+			return $this->upload_directory.DS.$this->filename;
+		}
 
 		public function save() {
 
