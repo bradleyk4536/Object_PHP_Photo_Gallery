@@ -30,7 +30,7 @@
 //			test to see if file exists if not echo and return false
 			if(empty($file) || !$file || !is_array($file)) {
 				$this->errors[] = "There is no file uploaded here";
-				return false
+				return false;
 			} elseif($file['error'] != 0 ) {
 
 				$this->errors[] = $this->upload_errors_array[$file['error']];
