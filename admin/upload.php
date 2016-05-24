@@ -2,7 +2,25 @@
 
 <?php if(!$session->is_signed_in()) { redirect("login.php"); } ?>
 
+<?php
+	$message="";
+	if(isset($_POST['submit'])) {
 
+		$photo = new Photo();
+//		grab title from form
+		$photo->title = $_POST['title'];
+//		grab the file from the super global
+		$photo->set_file($_FILES['file_upload']);
+//		test to see if photo is saved method returns true if saved false if not
+		if($photo->save()){
+
+			$message = "Photo Uploaded Successfully";
+		} else {
+
+			$message = join("<br>", $photo->errors);
+		}
+	}
+?>
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -27,6 +45,9 @@
 
 		 <!-- Page Heading -->
 		 <div class="row">
+<?php
+	echo $message;
+?>
 			  <div class="col-lg-12">
 					<h1 class="page-header">
 						 Upload
