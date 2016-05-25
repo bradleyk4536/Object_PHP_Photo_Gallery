@@ -44,11 +44,18 @@ $photos = Photo::find_all();
 								</tr>
 							</thead>
 							<tbody>
-
 								<?php foreach($photos as $photo) : ?>
 									<tr>
 <!--										path in src attribute is from class method for dynamic paths-->
-										<td><img src="<?php echo $photo->picture_path(); ?>" alt=""></td>
+										<td><img src="<?php echo $photo->picture_path(); ?>" alt="">
+										<div class="picture_link">
+
+											<a href="#">Edit</a>
+											<a href="#">View</a>
+											<a href="delete_photo.php/?id=<?php echo $photo->photo_id ?>">Delete</a>
+
+										</div>
+										</td>
 										<td><?php echo $photo->photo_id; ?> </td>
 										<td><?php echo $photo->filename; ?> </td>
 										<td><?php echo $photo->title; ?> </td>
