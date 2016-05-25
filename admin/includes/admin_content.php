@@ -22,9 +22,16 @@
 //
 //				  		$new_user->create();
 //				  static method no need to instantiate
-//				  		$new_user = new User();
+//				  		$new_user = User::find_by_id(4);
 //
-//						$new_user->find_user_by_id(2);
+//				  		$new_user->username = "JONES";
+//
+//				  		$new_user->update();
+//
+
+
+
+//						$new_user->find_by_id(2);
 //
 //				  		$new_user->last_name = "WILLIAMS";
 //
@@ -41,11 +48,11 @@
 //
 //				  		$updateuser->delete();
 
-//				  		$users = User::find_all();
-//				  		foreach($users as $user) {
-//							echo $user->username . "<br>";
-////						}
-//
+				  		$photos = Photo::find_by_id(9);
+
+							echo $photos->filename . "<br>";
+
+
 //				  		$photos = Photo::find_all();
 //				  		foreach($photos as $photo) {
 //							echo $photo->title;
@@ -59,7 +66,7 @@
 //				  		$new_photo->type = ".jpg";
 //				  		$new_photo->save();
 
-				  	echo INCLUDES_PATH;
+
 
 				  	?>
 					<ol class="breadcrumb">

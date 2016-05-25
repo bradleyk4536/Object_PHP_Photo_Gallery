@@ -29,7 +29,7 @@
 	//	confirm query success
 		private function confirm_query($result) {
 			if(!$result) {
-				die("Database Query Failed" . $this->connection->error);
+				die("Database Query Failed " . $this->connection->error);
 			}
 		}
 	//	end of confirm_query
