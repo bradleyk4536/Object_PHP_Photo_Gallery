@@ -49,11 +49,9 @@ $photos = Photo::find_all();
 <!--										path in src attribute is from class method for dynamic paths-->
 										<td><img src="<?php echo $photo->picture_path(); ?>" alt="">
 										<div class="picture_link">
-
 											<a href="#">Edit</a>
 											<a href="#">View</a>
 											<a href="delete_photo.php/?id=<?php echo $photo->id ?>">Delete</a>
-
 										</div>
 										</td>
 										<td><?php echo $photo->id; ?> </td>
