@@ -50,33 +50,25 @@
 		}
 
 		public function save() {
-
 //			do some error checking to see if photo exists if so just update
 			if($this->id) {
-
 				$this->update();
-
 			} else {
 //				check errors array to see if it is empty
 				if(!empty($this->errors)) {
 					return false;
 				}
-
 				if(empty($this->filename) || empty($this->tmp_path)) {
 					$this->errors[] = "The file is not available";
 					return false;
 				}
 //				target path permanent location of images
-
 				$target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;
-
 //				check to see if file exists in images folder
-
 				if(file_exists($target_path)) {
 					$this->errors[] = "The file {$this->filename} already exists";
 					return false;
 				}
-
 //				move file from super global temp location to target path location
 				if(move_uploaded_file($this->tmp_path, $target_path)) {
 
@@ -85,14 +77,22 @@
 						return true;
 					}
 				} else {
-
 					$this->errors[] = "You do not have permission to save file";
 					return false;
 				}
 
 			}
-
-
+		}
+//		delete from database and directory
+		public function delete_photo(){
+//			delete method from db_object
+			if($this->delete()) {
+				$target_path = SITE_ROOT.DS. 'admin' . DS . $this->picture_path();
+//				predefined function that will delete file true if able false if not
+				return unlink($target_path) ? true : false;
+			} else {
+				return false;
+			}
 		}
 
 	} //end class

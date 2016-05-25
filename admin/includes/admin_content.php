@@ -47,10 +47,10 @@
 //				  		$updateuser = User::find_user_by_id(5);
 //
 //				  		$updateuser->delete();
-
-				  		$photos = Photo::find_by_id(9);
-
-							echo $photos->filename . "<br>";
+//
+//				  		$photos = Photo::find_by_id(9);
+//
+//							echo $photos->filename . "<br>";
 
 
 //				  		$photos = Photo::find_all();
