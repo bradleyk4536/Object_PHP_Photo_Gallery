@@ -52,3 +52,8 @@ background-color: #ddd;
 padding: 10px;
 
 }
+
+.user_image {
+	width: 52px;
+	height: 52px;
+}
