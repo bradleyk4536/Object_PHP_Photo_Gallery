@@ -6,16 +6,16 @@
 //check to see if photo is there
 if(empty($_GET['id'])) {
 
-	redirect("photos.php");
+	redirect("comments.php");
 }
 //call photo class find_by_id method
-$photo = Photo::find_by_id($_GET['id']);
+$comment = Comment::find_by_id($_GET['id']);
 
 //test to see if photo id was gotten, if so delete if not redirect back to photos.php
-if($photo) {
-	$photo->delete_photo();
-	redirect("photos.php");
+if($comment) {
+	$comment->delete();
+	redirect("photo_comment.php?id={$comment->photo_id}");
 } else {
-	redirect("photos.php");
+	redirect("photo_comment.php?id={$comment->photo_id}");
 }
 ?>
