@@ -18,24 +18,35 @@
 			UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload."
 		);
 
-//self instantiation comment methd
+//self instantiation comment method
 
 		public static function create_comment($photo_id, $author="John Dow", $body=""){
+			global $database;
 //			test to see if $photo_id, author and body are present
 			if(!empty($photo_id) && !empty($author) && !empty($body)) {
 
 //				create object
 				$comment = new Comment();
 //				assign values to newly created object
-				$comment->photo_id 	= (int)$photo_id; //make sure it is with (int)
-				$comment->author 		= $author;
-				$comment->body 		= $body;
+				$comment->photo_id 	= $database->escape_string((int)$photo_id); //make sure it is with (int)
+				$comment->author 		= $database->escape_string($author);
+				$comment->body 		= $database->escape-string($body);
 
 //				return the comment object
 				return $comment;
 			} else {
 				return false;
 			}
+		}
+
+		public static function find_the_comments($photo_id=0){
+			global $database;
+//			find comment by photo id
+			$sql = "SELECT * FROM " . self::$db_table;
+			$sql .= " WHERE photo_id = " . $database->escape_string($photo_id);
+			$sql .= " ORDER BY photo_id ASC";
+
+			return self::find_by_query($sql);
 		}
 
 	} //END OF USER CLASS
