@@ -18,7 +18,25 @@
 			UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload."
 		);
 
+//self instantiation comment methd
 
+		public static function create_comment($photo_id, $author="John Dow", $body=""){
+//			test to see if $photo_id, author and body are present
+			if(!empty($photo_id) && !empty($author) && !empty($body)) {
+
+//				create object
+				$comment = new Comment();
+//				assign values to newly created object
+				$comment->photo_id 	= (int)$photo_id; //make sure it is with (int)
+				$comment->author 		= $author;
+				$comment->body 		= $body;
+
+//				return the comment object
+				return $comment;
+			} else {
+				return false;
+			}
+		}
 
 	} //END OF USER CLASS
 
