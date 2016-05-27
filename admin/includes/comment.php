@@ -30,7 +30,7 @@
 //				assign values to newly created object
 				$comment->photo_id 	= $database->escape_string((int)$photo_id); //make sure it is with (int)
 				$comment->author 		= $database->escape_string($author);
-				$comment->body 		= $database->escape-string($body);
+				$comment->body 		= $database->escape_string($body);
 
 //				return the comment object
 				return $comment;
