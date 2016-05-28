@@ -4,13 +4,24 @@
 		private $signed_in = false;
 		public $user_id;
 		public $message;
+		public $session_count;
 
 		function __construct() {
 			session_start();
 			$this->check_the_login();
 			$this->check_message();
-
+			$this->vistor_count();
 		}
+//		Display amount of view in gallery
+
+		public function vistor_count(){
+			if(isset($_SESSION['session_count'])) {
+				return $this->session_count = $_SESSION['session_count']++;
+			} else {
+				return $_SESSION['session_count'] = 1;
+			}
+		}
+
 //message display method
 		public function message($msg="") {
 
