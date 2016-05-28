@@ -31,13 +31,13 @@ $found_comments = Comment::find_the_comments($photo->id);
 ?>
 
 
-
-<div class="col-lg-8">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2">
 
 	 <!-- Blog Post -->
 	<?php foreach($found_comments as $comment) : ?>
 	 <!-- Title -->
-	 <h1>Blog Post Title</h1>
+	 <h1><?php echo $photo->title ?></h1>
 
 	 <!-- Author -->
 	 <p class="lead">
@@ -48,7 +48,7 @@ $found_comments = Comment::find_the_comments($photo->id);
 	 <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
 	 <hr>
 	 <!-- Preview Image -->
-	 <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+	 <img class="img-responsive" src="admin/<?php echo $photo->picture_path(); ?>" alt="">
 	 <hr>
 	 <!-- Post Content -->
 	 <p class="lead"><?php echo $comment->body; ?></p>
@@ -87,13 +87,15 @@ $found_comments = Comment::find_the_comments($photo->id);
 		  </div>
 	 </div>
 </div>
-
+</div>
 	<!-- Blog Sidebar Widgets Column -->
+<!--
 	<div class="col-md-4">
 
-		  <?php include("includes/sidebar.php"); ?>
+		  <?php //include("includes/sidebar.php"); ?>
 
 	</div>
+-->
 <!-- /.row -->
 
 <?php include("includes/footer.php"); ?>
