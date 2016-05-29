@@ -2,3 +2,12 @@
 	width: 200px;
 	height: 150px !important;
 }
+
+/*HOME PAGE PAGINATION*/
+a.active {
+
+	background-color: black !important;
+	color: white;
+	border: 1px solid black !important;
+
+}
