@@ -4,11 +4,19 @@
 //	For pagination first set page variable
 	$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 //	Set total photos per page
-	$items_per_page = 8;
+	$items_per_page = 4;
 //	Get total photo count
 	$items_total_count = Photo::count_all();
+//	instantiate class
+	$paginate = new Paginate($page, $items_per_page, $items_total_count);
+
+	$sql = "SELECT * FROM photos ";
+	$sql .= " LIMIT {$items_per_page} ";
+	$sql .= "OFFSET {$paginate->offset()}";
+
+	$photos = Photo::find_by_query($sql);
 ?>
-<?php $photos = Photo::find_all(); ?>
+
 <div class="row">
 	<!-- Blog Entries Column -->
 	<div class="col-md-12">
