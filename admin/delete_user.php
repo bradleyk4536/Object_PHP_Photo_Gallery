@@ -14,6 +14,7 @@ $user = User::find_by_id($_GET['id']);
 //test to see if photo id was gotten, if so delete if not redirect back to photos.php
 if($user) {
 	$user->delete();
+
 	redirect("users.php");
 } else {
 	redirect("users.php");
