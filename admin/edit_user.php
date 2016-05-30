@@ -31,6 +31,7 @@ if(isset($_POST['submit'])) {
 	}
 }
 ?>
+<?php require_once("includes/modal.php"); ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
@@ -61,7 +62,8 @@ if(isset($_POST['submit'])) {
 					</h1>
 					<div class="col-md-6">
 						<?php echo $messages; ?>
-						<img class="img-responsive" src="<?php echo $user->image_placeholder(); ?>" alt="">
+<!--						MODAL SETUP -->
+						<a href="#"data-toggle="modal" data-target="#photo-modal"><img class="img-responsive" src="<?php echo $user->image_placeholder(); ?>" alt=""></a>
 					</div>
 
 					<form action="" method="post" enctype="multipart/form-data">
