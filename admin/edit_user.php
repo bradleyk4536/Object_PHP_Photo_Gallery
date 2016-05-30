@@ -31,7 +31,7 @@ if(isset($_POST['submit'])) {
 	}
 }
 ?>
-<?php require_once("includes/modal.php"); ?>
+<?php include("includes/photo_modal.php"); ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
@@ -60,7 +60,7 @@ if(isset($_POST['submit'])) {
 						 Photo Gallery
 						 <small>Subheading</small>
 					</h1>
-					<div class="col-md-6">
+					<div class="col-md-6 user_image_box">
 						<?php echo $messages; ?>
 <!--						MODAL SETUP -->
 						<a href="#"data-toggle="modal" data-target="#photo-modal"><img class="img-responsive" src="<?php echo $user->image_placeholder(); ?>" alt=""></a>
@@ -88,7 +88,7 @@ if(isset($_POST['submit'])) {
 								<input type="password" name="password" class="form-control" value="<?php echo $user->password; ?>">
 							</div>
 							<div class="form-group pull-right">
-							<a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
+							<a href="delete_user.php?id=<?php echo $user->id; ?>" id="user-id" class="btn btn-danger">Delete</a>
 							<input type="submit" class="btn btn-success" name="submit" value="Update User" >
 
 							</div>

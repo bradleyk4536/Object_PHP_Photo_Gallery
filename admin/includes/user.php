@@ -68,7 +68,7 @@
 				}
 
 			}
-
+//		contains directory and image name
 		public function image_placeholder(){
 
 			return empty($this->user_image) ? $this->image_placeholder : $this->upload_directory . DS . $this->user_image;
@@ -91,6 +91,22 @@
 			return !empty($result_array) ? array_shift($result_array) : false;
 		}
 
+		public function ajax_save_user_image($user_image, $user_id){
+			global $database;
+
+			$user_image = $database->escape_string($user_image);
+			$user_id 	= $database->escape_string($user_id);
+
+			$this->user_image = $user_image;
+			$this->id 			= $user_id;
+
+			$sql = "UPDATE " . self::$db_table . " SET user_image = '{$this->user_image}' ";
+			$sql .= "WHERE id = {$this->id}";
+			$update_image = $database->query_db($sql);
+//			contains directory and image name
+			echo $this->image_placeholder();
+
+		}
 	} //END OF USER CLASS
 
 

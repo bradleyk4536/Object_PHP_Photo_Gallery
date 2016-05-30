@@ -96,6 +96,16 @@
 				return false;
 			}
 		}
+//		populate sidebar with ajax call
+		public static function display_sidebar_data($photo_id) {
+			$photo = Photo::find_by_id($photo_id);
+			$output = "<a class='thumbnail' href='#'><img width='100' src='{$photo->picture_path()}' ";
+			$output .= "<ul><li>Filename - {$photo->filename}</li>";
+			$output .= "<li>Filetype - {$photo->type}</li>";
+			$output .= "<li>Filesize - {$photo->size}</li></ul>";
+
+			echo $output;
+		}
 
 	} //end class
 ?>

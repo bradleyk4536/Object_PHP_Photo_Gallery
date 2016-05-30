@@ -41,7 +41,7 @@
 				}
 			}
 			if($paginate->has_previous()) {
-				echo "<li class='previous'><a href='index.php?page={$paginate->previous_page()}'>Previous</a></li>";
+			echo "<li class='previous'><a href='index.php?page={$paginate->previous_page()}'>Previous</a></li>";
 			}
 		}
 	?>
