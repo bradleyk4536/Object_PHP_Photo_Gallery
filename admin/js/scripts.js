@@ -63,8 +63,16 @@ $(document).ready(function(){
 
 	});
 
+/**************************photo gallery delete***************************/
+	$(".delete_link").click(function(){
+
+		return confirm("Are you sure you want to delete");
+	})
+
 //Editor
 tinymce.init({ selector:'textarea' });
 });
+
+
 
 

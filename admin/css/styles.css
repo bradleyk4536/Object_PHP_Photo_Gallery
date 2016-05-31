@@ -73,3 +73,9 @@ min-height: 300px !important;
 
 
 #modal_sidebar { position: fixed !important; }
+
+/****************LOGIN PAGE*************/
+
+#login-id label {
+	color: white;
+}
