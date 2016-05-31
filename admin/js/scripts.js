@@ -55,7 +55,13 @@ $(document).ready(function(){
 
 	});
 
+/*************************EDIT PHOTO SIDBBAR*********************/
 
+	$(".info-box-header").click(function(){
+		$(".inside").slideToggle("fast");
+		$("#toggle").toggleClass("glyphicon-menu-down glyphicon, glyphicon-menu-up");
+
+	});
 
 //Editor
 tinymce.init({ selector:'textarea' });

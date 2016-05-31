@@ -77,7 +77,7 @@ if(isset($_POST['update'])) {
 								<textarea class="form-control" name="description" id="" cols="30" rows="10"><?php echo str_replace('\r\n', '<br>', $photo->description); ?></textarea>
 							</div>
 						</div>
-						<div class="col-md-4" >
+		<div class="col-md-4" >
 				 <div  class="photo-info-box">
 					  <div class="info-box-header">
 						  <h4>Save <span id="toggle" class="glyphicon glyphicon-menu-up pull-right"></span></h4>

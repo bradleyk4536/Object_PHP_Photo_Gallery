@@ -4,13 +4,13 @@
 
 <?php
 	$message="";
-	if(isset($_POST['submit'])) {
+	if(isset($_FILES['file'])) {
 
 		$photo = new Photo();
 //		grab title from form
 		$photo->title = $_POST['title'];
 //		grab the file from the super global
-		$photo->set_file($_FILES['file_upload']);
+		$photo->set_file($_FILES['file']);
 //		test to see if photo is saved method returns true if saved false if not
 		if($photo->save()){
 
@@ -61,7 +61,7 @@
 							<input class="form-control" type="text" name="title">
 						</div>
 						<div class="form-group">
-							<input type="file" name="file_upload">
+							<input type="file" name="file">
 
 						</div>
 						<input class="btn btn-success" type="submit" name="submit" value="submit">
@@ -71,7 +71,7 @@
 					</div> <!--end of row-->
 					<div class="row">
 						<div class="col-lg-12">
-							<form action="upload" class="dropzone">
+							<form action="upload.php" class="dropzone">
 
 							</form>
 						</div>
