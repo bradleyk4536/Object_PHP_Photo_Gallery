@@ -30,6 +30,7 @@ $comments = Comment::find_all();
 					<h1 class="page-header">
 						Comments
 					</h1>
+					<?php include("includes/success_message.php"); ?>
 					<a href="add_user.php" class="btn btn-primary">Add comment</a>
 					<div class="col-md-12">
 						<table class="table table-hover">

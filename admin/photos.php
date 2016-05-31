@@ -30,6 +30,8 @@ $photos = Photo::find_all();
 					<h1 class="page-header">
 						 Photo Gallery
 					</h1>
+<!--					Display session message-->
+					<?php include("includes/success_message.php"); ?>
 					<div class="col-md-12">
 						<table class="table table-hover">
 							<thead>

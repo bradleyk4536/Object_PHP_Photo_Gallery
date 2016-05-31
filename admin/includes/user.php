@@ -107,6 +107,18 @@
 			echo $this->image_placeholder();
 
 		}
+
+		//		delete from database and directory
+		public function delete_photo(){
+//			delete method from db_object
+			if($this->delete()) {
+				$target_path = SITE_ROOT.DS. 'admin' . DS . $this->upload_directory . DS . $this->user_image;
+//				predefined function that will delete file true if able false if not
+				return unlink($target_path) ? true : false;
+			} else {
+				return false;
+			}
+		}
 	} //END OF USER CLASS
 
 

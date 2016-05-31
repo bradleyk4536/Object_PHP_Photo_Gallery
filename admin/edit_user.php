@@ -66,7 +66,7 @@ if(isset($_POST['submit'])) {
 						 <small>Subheading</small>
 					</h1>
 					<div class="col-md-6 user_image_box">
-						<?php echo $messages; ?>
+						<?php include("includes/success_message"); ?>
 <!--						MODAL SETUP -->
 						<a href="#"data-toggle="modal" data-target="#photo-modal"><img class="img-responsive" src="<?php echo $user->image_placeholder(); ?>" alt=""></a>
 					</div>

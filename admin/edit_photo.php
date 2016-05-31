@@ -20,6 +20,7 @@ if(isset($_POST['update'])) {
 		$photo->description = $_POST['description'];
 //		save method in db_object
 		$photo->save();
+		$session->message("Photo has been updated");
 	}
 }
 ?>
@@ -51,9 +52,9 @@ if(isset($_POST['update'])) {
 						 Photo Gallery
 						 <small>Subheading</small>
 					</h1>
+					<?php include("includes/success_message.php"); ?>
 					<form action="" method="post">
 						<div class="col-md-8">
-
 							<div class="form-group">
 
 								<input type="text" name="title" class="form-control" value="<?php echo $photo->title ?>">

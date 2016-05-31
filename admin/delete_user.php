@@ -13,8 +13,8 @@ $user = User::find_by_id($_GET['id']);
 
 //test to see if photo id was gotten, if so delete if not redirect back to photos.php
 if($user) {
-	$user->delete();
-
+	$user->delete_photo();
+	$session->message("The user has been deleted");
 	redirect("users.php");
 } else {
 	redirect("users.php");

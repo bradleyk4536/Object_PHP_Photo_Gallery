@@ -14,6 +14,7 @@ $photo = Photo::find_by_id($_GET['id']);
 //test to see if photo id was gotten, if so delete if not redirect back to photos.php
 if($photo) {
 	$photo->delete_photo();
+	$session->message("Photo has been deleted");
 	redirect("photos.php");
 } else {
 	redirect("photos.php");

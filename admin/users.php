@@ -31,10 +31,8 @@ $users = User::find_all();
 					<h1 class="page-header">
 						Users
 					</h1>
-					<div class="alert alert-success alert-dismissible" role="alert">
-					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					  <strong><?php echo $message; ?></strong>
-					</div>
+<!--					Display session message-->
+					<?php include("includes/success_message.php"); ?>
 					<a href="add_user.php" class="btn btn-primary">Add User</a>
 					<div class="col-md-12">
 						<table class="table table-hover">

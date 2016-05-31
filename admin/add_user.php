@@ -2,7 +2,7 @@
 
 <?php if(!$session->is_signed_in()) { redirect("login.php"); } ?>
 <?php
-$messages="";
+
 if(isset($_POST['submit'])) {
 	$user = new User();
 	if($user) {
@@ -15,14 +15,8 @@ if(isset($_POST['submit'])) {
 		//$user->password = password_hash($user->password, PASSWORD_BCRYPT, array('cost => 12'));
 
 		$user->set_file($_FILES['user_image']);
-
-		if($user->save_user_and_image()) {
-
-			$messages="New user added";
-		} else {
-
-			$messages=join("<br>", $user->errors);
-		}
+		$user->upload_photo();
+		$user->save();
 	}
 }
 ?>
@@ -54,7 +48,7 @@ if(isset($_POST['submit'])) {
 						 Photo Gallery
 						 <small>Subheading</small>
 					</h1>
-					<?php echo $messages; ?>
+
 					<form action="add_user.php" method="post" enctype="multipart/form-data">
 						<div class="col-md-6 col-md-offset-3">
 							<div class="form-group">
