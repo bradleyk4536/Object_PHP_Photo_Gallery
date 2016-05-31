@@ -386,3 +386,12 @@
         border-left: 6px solid transparent;
         border-right: 6px solid transparent;
         border-bottom: 6px solid #be2626; }
+
+/****************custom styles for dropzone***************/
+
+.dropzone {
+	background: white;
+	border: 6px dashed #359ef5;
+	border-radius: 5px;
+	margin-top: 25px;
+}

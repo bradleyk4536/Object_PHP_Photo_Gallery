@@ -52,6 +52,7 @@
 					<h1 class="page-header">
 						 Photo Upload
 					</h1>
+					<div class="row">
 					<div class="col-md-6">
 
 						<form action="upload.php" method="post" enctype="multipart/form-data">
@@ -67,6 +68,15 @@
 					</form>
 
 					</div>
+					</div> <!--end of row-->
+					<div class="row">
+						<div class="col-lg-12">
+							<form action="upload" class="dropzone">
+
+							</form>
+						</div>
+					</div>
+
 			  </div>
 		 </div>
 		 <!-- /.row -->
