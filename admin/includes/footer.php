@@ -9,6 +9,8 @@
 
 <!--    WYSIWYG-->
     <script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
+<!--    dropzone.js for drag and drop of files-->
+	 <script src="js/dropzone.js"></script>
 <!--    script for tinymce editor-->
     <script src="js/scripts.js"></script>
 
