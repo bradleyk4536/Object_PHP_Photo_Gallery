@@ -1,7 +1,5 @@
 <?php include("includes/init.php"); ?>
-
 <?php if(!$session->is_signed_in()) { redirect("login.php"); } ?>
-
 <?php
 //check to see if photo is there
 if(empty($_GET['id'])) {
